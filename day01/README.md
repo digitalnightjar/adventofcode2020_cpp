@@ -1,0 +1,1 @@
+The task for day 01 is to find two entries within a list of values, the sunm of which equals 2020 and to post the result of multiplying those values together.
