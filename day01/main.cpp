@@ -73,11 +73,11 @@ const uint32_t getPartTwo(const std::vector<uint32_t>& data, const uint32_t targ
     // There's an approach to do this using a few ptrs, but a hash approach is probably easier to follow.
     const size_t dataLen = data.size();
 
-    // Fix the first element as A[i] 
+    // Fix the first element as Data.at(i) 
     for (int i = 0; i < dataLen - 2; ++i)  
     { 
         // Find pair in subarray data[i+1..n-1] 
-        // with sum equal to sum - data[i] 
+        // with sum equal to sum - data.at(i) 
         std::unordered_set<uint32_t> dataSet; 
         uint32_t curr_sum = target - data.at(i); 
         for (uint32_t j = i + 1; j < dataLen; j++)  
