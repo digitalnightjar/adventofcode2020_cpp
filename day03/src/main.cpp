@@ -29,6 +29,31 @@ DayThreeData readData(const std::string& filePath)
 const uint32_t GetPartOne(DayThreeData data)
 {
     uint32_t result = 0;
+    size_t currHPos = 0;
+    const size_t lineLen = data[0].length();
+
+    // We'll loop each row starting on the first one down;
+    for (size_t currVPos = 1; currVPos < data.size(); ++currVPos)
+    {
+        const std::string currLine = data[currVPos];
+        size_t nextHPos = currHPos + 3;
+        
+        if (nextHPos >= lineLen)
+        {
+            size_t offset = nextHPos - lineLen;
+            nextHPos = offset;
+        }
+
+        currHPos = nextHPos;
+
+        if (data[currVPos].at(currHPos) == HIT)
+        {
+            result++;
+        }
+    }
+
+
+
     return result;
 }
 
