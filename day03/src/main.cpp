@@ -4,9 +4,24 @@
 #include <vector>
 
 typedef std::vector<std::string> DayThreeData;
+typedef struct {
+    size_t right;
+    size_t down;
+} Rule;
+typedef std::vector<Rule> RULES;
+
 const std::string dataPath = "./data/day03.in";
+
 const char HIT = '#';
 const char SPACE = '.';
+
+const RULES PartTwoRules = {
+    {1,1},
+    {3,1}, // This is the rule that was used for PartOne
+    {5,1},
+    {7,1},
+    {1,2},
+};
 
 DayThreeData readData(const std::string& filePath)
 {
@@ -51,9 +66,35 @@ const uint32_t GetPartOne(DayThreeData data)
             result++;
         }
     }
+    return result;
+}
 
+const uint32_t GetPartTwo(DayThreeData data, Rule slope)
+{
+    uint32_t result = 0;
+    size_t currHPos = 0;
+    const size_t lineLen = data[0].length();
+    const size_t numLines = data.size();
 
+    // We'll loop each row starting on the first one down;
+    for (size_t currVPos = slope.down; currVPos < numLines; currVPos += slope.down)
+    {
+        const std::string currLine = data[currVPos];
+        size_t nextHPos = currHPos + slope.right;
+        
+        if (nextHPos >= lineLen)
+        {
+            size_t offset = nextHPos - lineLen;
+            nextHPos = offset;
+        }
 
+        currHPos = nextHPos;
+
+        if (data[currVPos].at(currHPos) == HIT)
+        {
+            result++;
+        }
+    }
     return result;
 }
 
@@ -66,9 +107,39 @@ int main(int, char**)
     DayThreeData data = readData(dataPath);
     
     result = GetPartOne(data);
-    std::cout << "Part One Answer: " << result << std::endl;    
-    // result = GetPartTwo(data);
-    std::cout << "Part Two Answer: " << result << std::endl;
+    std::cout << "Part One Answer: " << result << std::endl;
     
-    return 0;
+    bool partTwoQuickCheck = false;
+    if (GetPartOne(data) == GetPartTwo(data, PartTwoRules.at(1)))
+    {
+        partTwoQuickCheck = true;
+    }
+    
+    if (partTwoQuickCheck)
+    {
+        uint32_t idx = 0;
+        std::vector<uint32_t> partTwoResults;
+        for (const Rule& rule : PartTwoRules)
+        {
+            partTwoResults.push_back(GetPartTwo(data, rule));
+            std::cout << "Part Two Answer for Rule [" << idx << "]: " << partTwoResults.back() << std::endl;
+            idx++;
+        }
+
+        // Using a 64bit integer, as if we just multiplied the part one answer 5 times its > MAX_INT for 32Bit Unsigned integers.
+        uint64_t partTwoResult = 1;
+        for (const uint32_t& result : partTwoResults)
+        {
+            partTwoResult = partTwoResult * result;
+        }
+        // Wrong Result attempt 1: 3936652720
+        std::cout << "Multiplying each of the results for part Two Results in: " << partTwoResult << std::endl;
+    }
+    else
+    {
+        std::cout << "Part One and Part Two answers don't match, " <<
+        "as part one has been validated, assume part two code is incorrect." << std::endl;
+    }
+    
+    return result;
 }
