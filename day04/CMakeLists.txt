@@ -1,5 +1,5 @@
 set(BINARY ${CMAKE_PROJECT_NAME})
 file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.hpp *.cpp)
 set(SOURCES ${SOURCES})
-add_executable(${BINARY}day01 ${SOURCES})
-file(COPY ../data/day01.in DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data)
+add_executable(${BINARY}_day04 ${SOURCES})
+file(COPY ../data/day04.in DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data)

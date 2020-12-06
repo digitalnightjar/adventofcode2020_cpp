@@ -110,7 +110,7 @@ int main(int, char**)
 {
     uint32_t result = 0;
     bool success = false;
-    const std::string filePath = "./values.txt";
+    const std::string filePath = "./data/day01.in";
 
     std::cout << "Hello, AdventOfCode 2020!\n";
     const std::vector<uint32_t> data = readData(filePath);

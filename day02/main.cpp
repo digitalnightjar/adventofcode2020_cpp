@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <algorithm>
 
 const std::vector<std::string> readData(const std::string& filePath)
 {
@@ -139,7 +140,7 @@ const uint32_t getPartTwo(const std::vector<std::string>& data)
 
 int main(int, char**)
 {
-    const std::string file = "./data.txt";
+    const std::string file = "./data/day02.in";
     std::cout << "Hello, AdventOfCode2020 Day 02!\n";
 
     std::vector<std::string> data = readData(file);

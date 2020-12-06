@@ -1,11 +1,5 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(day02 VERSION 0.1.0)
-
-include(CTest)
-enable_testing()
-
-add_executable(day02 main.cpp)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+set(BINARY ${CMAKE_PROJECT_NAME})
+file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.hpp *.cpp)
+set(SOURCES ${SOURCES})
+add_executable(${BINARY}_day02 ${SOURCES})
+file(COPY ../data/day02.in DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/data)
