@@ -453,14 +453,14 @@ void printPassportData(const SPassport& data)
         std::cout << "====================INVALID===================\n";
     }
     
-    std::cout << "Passport ID:     " << data.passportID.id       << "\t" << data.passportID.isValid << "\n";
-    std::cout << "Country ID:      " << data.countryID.id        << "\t" << data.countryID.isValid << "\n";
-    std::cout << "Issue Year:      " << data.issueYear.year      << "\t" << data.issueYear.isValid << "\n";
-    std::cout << "Expiration Year: " << data.expirationYear.year << "\t" << data.expirationYear.isValid << "\n";
-    std::cout << "Birth Year:      " << data.birthYear.year      << "\t" << data.birthYear.isValid << "\n";
-    std::cout << "Height:          " << data.height.height       << "\t" << data.height.isValid << "\n";
-    std::cout << "Hair Color:      " << data.hairColor.color     << "\t" << data.hairColor.isValid << "\n";
-    std::cout << "Eye Color:       " << data.eyeColor.color      << "\t" << data.eyeColor.isValid << "\n";
+    std::cout << "Passport ID:     " << data.passportID.id       << "\t\t"    << ((data.passportID.isValid      == true) ? "VALID" : "INVALID") << "\n";
+    std::cout << "Country ID:      " << data.countryID.id        << "\t\t\t"  << ((data.countryID.isValid       == true) ? "VALID" : "IGNORED") << "\n";
+    std::cout << "Issue Year:      " << data.issueYear.year      << "\t\t\t"  << ((data.issueYear.isValid       == true) ? "VALID" : "INVALID") << "\n";
+    std::cout << "Expiration Year: " << data.expirationYear.year << "\t\t\t"  << ((data.expirationYear.isValid  == true) ? "VALID" : "INVALID") << "\n";
+    std::cout << "Birth Year:      " << data.birthYear.year      << "\t\t\t"  << ((data.birthYear.isValid       == true) ? "VALID" : "INVALID") << "\n";
+    std::cout << "Height:          " << data.height.height       << "\t\t\t"  << ((data.height.isValid          == true) ? "VALID" : "INVALID") << "\n";
+    std::cout << "Hair Color:      " << data.hairColor.color     << "\t\t"    << ((data.hairColor.isValid       == true) ? "VALID" : "INVALID") << "\n";
+    std::cout << "Eye Color:       " << data.eyeColor.color      << "\t\t\t"  << ((data.eyeColor.isValid        == true) ? "VALID" : "INVALID") << "\n";
     std::cout << "================END PASSPORT================\n\n\n";
 }
 
